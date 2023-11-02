@@ -1,0 +1,27 @@
+#version: '3'
+#
+#services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - DATABASE_HOST=jdbc:mySql://localhost:3306/library
+#      - DATABASE_PORT=3306
+#      - DATABASE_USERNAME=root
+#      - DATABASE_PASSWORD=123123
+#    depends_on:
+#      - db
+#
+#  db:
+#    image: mysql:8.0
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=123123
+#      - MYSQL_DATABASE=library
+#    volumes:
+#      - db-data:/var/lib/mysql
+#
+#volumes:
+#  db-data:

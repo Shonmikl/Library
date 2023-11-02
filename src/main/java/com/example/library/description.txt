@@ -1,0 +1,43 @@
+create database library;
+use library;
+
+CREATE TABLE Authors (
+    author_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    birthdate DATE
+);
+
+CREATE TABLE Books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    author_id INT,
+    publish_date DATE,
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
+);
+
+CREATE TABLE Reviews (
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id INT,
+    review_text TEXT,
+    reviewer_name VARCHAR(255),
+    review_date DATE,
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+);
+
+INSERT INTO Authors (name, birthdate) VALUES
+('Leo Tolstoy', '1828-09-09'),
+('Fyodor Dostoevsky', '1821-11-11'),
+('Jane Austen', '1775-12-16'),
+('George Orwell', '1903-06-25');
+
+INSERT INTO Books (title, author_id, publish_date) VALUES
+('War and Peace', 1, '1869-01-01'),
+('Crime and Punishment', 2, '1867-01-01'),
+('Pride and Prejudice', 3, '1813-01-01'),
+('1984', 4, '1949-06-08');
+
+INSERT INTO Reviews (book_id, review_text, reviewer_name, review_date) VALUES
+(1, 'Amazing novel with deep insights into human nature.', 'Reviewer1', '2020-01-01'),
+(2, 'A thrilling story of guilt and redemption.', 'Reviewer2', '2021-02-02'),
+(3, 'A classic love story that stands the test of time.', 'Reviewer3', '2022-03-03'),
+(4, 'A chilling dystopia that feels all too real.', 'Reviewer4', '2023-04-04');
